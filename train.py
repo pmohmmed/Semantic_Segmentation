@@ -30,8 +30,8 @@ pre_labels = pre.labels_pre(labels, fix=opt.enc ,encode=opt.enc)
 print(f'train: {pre_images.shape}, {pre_labels.shape}')
 
 # val
-pre_images_val = pre.images_pre(images)
-pre_labels_val = pre.labels_pre(labels, fix=opt.enc ,encode=opt.enc)
+pre_images_val = pre.images_pre(images_val)
+pre_labels_val = pre.labels_pre(labels_val, fix=opt.enc ,encode=opt.enc)
 print(f'val: {pre_images_val.shape}, {pre_labels_val.shape}')
 
 ## build model
@@ -58,4 +58,4 @@ u_history = model.fit(
 
 ## save
 #model.save_weights(f'{opt.model_path}.weights.h5')
-model.save(f'{opt.model_path}.keras')
+model.save(opt.model_path)
