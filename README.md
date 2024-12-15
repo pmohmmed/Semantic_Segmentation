@@ -6,6 +6,7 @@
     <img style="width:100%" src="assets/inf.gif" alt="gif of inference">
 </div>
 
+
 ## Dataset
 
 The dataset contains 270 paired samples, split into:
@@ -69,7 +70,7 @@ dataset/
 <br>
 
 ## Setup environment & load dataset
-Create virtual environment (for more organization):
+Create virtual environment for more organization (optional):
 
 
 `python3 -m venv <path/to/env>`
@@ -82,7 +83,7 @@ Install python dependencies:
 
 <br>
 
-Clone aug_pre dataset:
+Clone aug_pre dataset (optional):
 
 `git clone https://github.com/pmohmmed/aug_pre.git`
 
@@ -102,8 +103,8 @@ bash scripts/augment.sh
 Command:
 ```bash
 python3 -m augment \
-        --data_path dataset \
-        --save_path aug_data \
+        --data_path path/to/dataset/ \
+        --save_path path/to/save/augmented_data \
         --pre True \
         --res 256 \
 ```
@@ -122,8 +123,8 @@ bash scripts/train.sh
 Command:
 ```bash
 python3 train.py \
-        --data_path data_ip \
-        --save_path ./model_w \
+        --data_path path/to/dataset/ \
+        --save_path models_path/unet.keras \
         --lr 0.0005 \
         --epochs 10 \
         --enc False \
@@ -134,9 +135,12 @@ python3 train.py \
 
 ## Inference
 
-For this stage you will need:
-- pre-trained model, ex: `unet.keras`, `inception.h5`
-- preprocessed object, ex: `pre_obj.pkl`
+To run inference, you will need the following:
+
+- A **pre-trained model** (e.g., `unet.keras`, `inception.h5`)
+- A **preprocessed object** (e.g., `pre_obj.pkl`)
+
+If you trained the model, both of these files would have been created automatically. Make sure they exist before running inference.
 
 Run **test.sh** script:
 ```bash
@@ -148,9 +152,9 @@ bash scripts/test.sh
 Command:
 ```bash
 python3 test.py \
-        --data_path ../data_ip/ \
-        --results_path results/\
-        --model_path ./unet \
+        --data_path path/to/test_data/Images \
+        --results_path path/to/save/results\
+        --model_path models_path/unet.keras \
         --pre_path data/pre.pkl
 ```
 
