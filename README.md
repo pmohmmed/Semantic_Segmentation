@@ -39,7 +39,7 @@ Data augmentation and preprocessing techniques were applied to generate addition
 - **New resolution**: 256x512 
 - **Total size**: 810 samples
 
-This ***Aug_pre*** dataset is ready for immediate use in training.
+This dataset requires minimal preprocessing before training.
 
 <br>
 
@@ -69,29 +69,35 @@ dataset/
 
 <br>
 
-## Setup environment & load dataset
-Create virtual environment for more organization (optional):
+## Setup environment
+- Clone this repo:
 
+  `git clone https://github.com/pmohmmed/semantic_segmentation.git`
 
-`python3 -m venv <path/to/env>`
+  <br>
+
+- Create and activate virtual environment (for more organization):
+
+  ```bash
+  $ python3 -m venv demo_env
+  |
+  $ source demo_env/bin/activate
+  ```
+<br>
+
+- Install python dependencies:
+
+  `pip install -r requirements.txt`
 
 <br>
 
-Install python dependencies:
-
-`pip install -r requirements.txt`
-
-<br>
-
-Clone aug_pre dataset (optional):
-
-`git clone https://github.com/pmohmmed/aug_pre.git`
+- Refer to the [Download](#download) section to download the dataset (if you haven’t already).
 
 <br>
 
 
 ## Augmentation
-You can skip this stage if you are working with ***aug_pre*** dataset.
+Skip this stage if you are using the [aug_pre](#aug_pre-dataset) dataset.
 
 To proceed, run **augment.sh** script:
 ```bash 
