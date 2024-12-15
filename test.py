@@ -20,7 +20,7 @@ pre_images = pre.images_pre(images)
 
 ## load model
 print('\n--       Loading Model      --\n')
-model = load_model(f'{opt.model_path}.keras')
+model = load_model(opt.model_path)
 
 ## inference
 print('\n--      Inference      --\n')
