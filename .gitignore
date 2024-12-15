@@ -1,5 +1,6 @@
 .DS_Store
 data_aug/
+data_pre/
 results/
 pre_trained/
 __pycache__
