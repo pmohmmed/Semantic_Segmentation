@@ -1,6 +1,7 @@
 .DS_Store
-aug_data/
+data_aug/
 results/
 pre_trained/
 __pycache__
 *.pkl
+*incept.py
