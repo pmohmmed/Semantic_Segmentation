@@ -1,0 +1,6 @@
+.DS_Store
+aug_data/
+results/
+pre_trained/
+__pycache__
+*.pkl
