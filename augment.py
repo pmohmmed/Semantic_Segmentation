@@ -10,7 +10,7 @@ import albumentations as A
 opt = aug_opt()
 
 ## load
-images, labels = load(opt.data_path, pre=False)
+images, labels = load(f'{opt.data_path}/train_data', pre=False)
 print(f'samples: {len(images)}')
 
 ## encode labels

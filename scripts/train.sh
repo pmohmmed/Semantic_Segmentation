@@ -5,8 +5,8 @@ python3 -m train\
         --epochs 1 \
         --enc False \
         --res 256 \
-        --data_path ../data_ip/ \
-        --model_path pre_trained/unet \
+        --data_path ../aug_pre/ \
+        --model_path pre_trained/unet.keras \
         --pre_path data/pre.pkl
 
 
