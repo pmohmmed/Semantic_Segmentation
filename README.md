@@ -46,9 +46,9 @@ This dataset requires minimal preprocessing before training.
 ### Download
 
 |Resolution|Google Drive|Github|
-|:--------:|:----------:|:----:|
-|Orig(540 x 960)|[Download](https://drive.google.com/drive/folders/1qJzEsf-S0Kg2SSYELEBl4D9lo9ytIpax)|None
-|Aug_pre(256 x 512)|None|[Download](https://github.com/pmohmmed/aug_pre/archive/refs/heads/main.zip)|
+|:---------|:----------:|:----:|
+|Aug_pre (256 x 512)|None|[Download](https://github.com/pmohmmed/aug_pre/archive/refs/heads/main.zip)|
+|Orig (540 x 960)|[Download](https://drive.google.com/drive/folders/1qJzEsf-S0Kg2SSYELEBl4D9lo9ytIpax)|None
 
 <br>
 
@@ -79,10 +79,9 @@ dataset/
 - Create and activate virtual environment (for more organization):
 
   ```bash
-  $ python3 -m venv demo_env
-  |
-  $ source demo_env/bin/activate
+  python3 -m venv demo_env && source demo_env/bin/activate
   ```
+
 <br>
 
 - Install python dependencies:
