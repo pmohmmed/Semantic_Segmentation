@@ -1,6 +1,6 @@
 
 <h1 align="center">
-    Semantic segmentation </br> Applied on a high-resolution UAV street scene imagery
+    Semantic segmentation | </br> Applied on a high-resolution UAV street scene imagery
 </h1>
 <div style=width:100%>
     <img style="width:100%" src="assets/inf.gif" alt="gif of inference">
@@ -69,12 +69,12 @@ dataset/
 
 <br>
 
-## Setup environment
+## Environment setup
 - Clone this repo:
   ```bash
-  git clone https://github.com/pmohmmed/semantic_segmentation.git
+  git clone https://github.com/pmohmmed/semantic-segmentation-uav.git;
   
-  cd semantic_segmentation
+  cd semantic-segmentation-uav
   ```
 
 
