@@ -114,8 +114,9 @@ bash scripts/augment.sh
 Command:
 ```bash
 python3 -m augment \
-        --data_path path/to/dataset/ \
-        --save_path path/to/save/augmented_data \
+        --data_path path/to/dataset \
+        --aug_data_path path/to/save/aug_data \
+        --pre_obj_path path/to/preprocessor/pre.pkl \
         --pre True \
         --res 256 \
 ```
@@ -133,13 +134,14 @@ bash scripts/train.sh
 
 Command:
 ```bash
-python3 train.py \
-        --data_path path/to/dataset/ \
-        --save_path models_path/unet.keras \
+python3 -m train \
         --lr 0.0005 \
-        --epochs 10 \
+        --epochs 1 \
         --enc False \
-        --res 256
+        --res 256 \
+        --data_path path/to/dataset/ \
+        --model_path path/to/save/model/unet.keras \
+        --pre_obj_path path/to/save/preprocessor/obj/pre.pkl
 ```
 
 <br>
@@ -162,11 +164,12 @@ bash scripts/test.sh
 
 Command:
 ```bash
-python3 test.py \
-        --data_path path/to/test_data/Images \
-        --results_path path/to/save/results\
-        --model_path models_path/unet.keras \
-        --pre_path data/pre.pkl
-```
+python3 -m test \
+        --data_path path/to/test_data \
+        --results_path path/to/save/results/\
+        --model_path path/to/model/unet.keras \
+        --pre_obj_path path/to/preprocessor/pre.pkl \
+        --show_results False
+``` 
 
 
