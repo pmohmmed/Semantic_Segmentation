@@ -71,8 +71,12 @@ dataset/
 
 ## Setup environment
 - Clone this repo:
+  ```bash
+  git clone https://github.com/pmohmmed/semantic_segmentation.git
+  
+  cd semantic_segmentation
+  ```
 
-  `git clone https://github.com/pmohmmed/semantic_segmentation.git`
 
   <br>
 
@@ -86,7 +90,9 @@ dataset/
 
 - Install python dependencies:
 
-  `pip install -r requirements.txt`
+  ```bash
+  pip install -r requirements.txt
+  ```
 
 <br>
 
