@@ -4,6 +4,7 @@ from data.preprocessor import Preprocessor
 from utils.options import aug_opt
 
 import albumentations as A
+import numpy as np
 
 
 ## command options
@@ -15,7 +16,12 @@ print(f'samples: {len(images)}')
 
 ## encode labels
 pre = Preprocessor(resize_to=None, one_h=False)
-pre_labels = pre.labels_pre(labels, fix=True, encode=True)
+
+if len(labels) and labels[0].ndim == 3: 
+    pre_labels = pre.labels_pre(labels, fix=True, encode=True)
+else:
+    pre_labels = np.array(labels)
+    labels = [pre.decode_label(lbl) for lbl in pre_labels]
 
 ## select samples to be augmented
 # criterias
