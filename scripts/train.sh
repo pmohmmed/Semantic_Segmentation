@@ -1,12 +1,10 @@
 #!/bin/sh
 
-python3 -m train\
-        --lr 0.005 \
+python3 -m train \
+        --lr 0.0005 \
         --epochs 1 \
         --enc False \
         --res 256 \
-        --data_path ../aug_pre/ \
-        --model_path pre_trained/unet.keras \
-        --pre_path data/pre.pkl
-
-
+        --data_path ../aug_pre \
+        --model_path ./unet.keras \
+        --pre_obj_path ./data/pre.pkl
