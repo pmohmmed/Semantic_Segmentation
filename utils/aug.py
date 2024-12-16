@@ -1,10 +1,12 @@
-from utils.helper import message
+from utils.helper import stg_msg
 
 import numpy as np
 
 
 def select(images, labels, labels_to_check, classes_dic):
     """ Select the images & labels that meet the ratios on 'Classes_dic'"""
+
+    #stg_msg('Selecting sampels')
 
     selected_imgs = []
     selected_lbls = []
@@ -23,8 +25,6 @@ def select(images, labels, labels_to_check, classes_dic):
         if count == number_of_classes:
             selected_imgs.append(images[i])
             selected_lbls.append(labels[i])
-
-    message(f"{len(selected_imgs)} samples selected", c='.')
 
     return selected_imgs, selected_lbls
 

@@ -1,4 +1,4 @@
-from utils.helper import message
+from utils.helper import stg_msg
 
 import numpy as np
 import cv2
@@ -112,7 +112,7 @@ class Preprocessor:
 
 
     def images_pre(self, images):
-        message('Images Preprocessing')
+        #stg_msg('Images Preprocessing')
         
         ## resize & normalize
         images = self.resize(images) / 255.0 
@@ -121,7 +121,7 @@ class Preprocessor:
 
 
     def labels_pre(self, labels, encode=True, fix=True):
-        message('Labels Preprocessing')
+        #stg_msg('Labels Preprocessing')
 
         ## resize
         pre_labels = self.resize(labels)

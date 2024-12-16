@@ -1,4 +1,4 @@
-from utils.helper import message
+from utils.helper import stg_msg
 
 import numpy as np
 from glob import glob
@@ -26,7 +26,7 @@ def load_img(path):
 
 
 def load(folder_path=None, shuffle=False, pre=False, name='Data'):
-    message(f'Loading {name}')
+    #stg_msg(f'Loading {name}')
 
     image_paths, label_paths = prepare_paths(folder_path, pre)
 
@@ -55,7 +55,7 @@ def shuffle_data(images, labels):
 def save(path, images, labels, prefix_name='__'):
     """Prefix_name should be "pre_" if you're saving preprocessed data"""
     
-    message('Saving')
+    #stg_msg('Saving')
 
     images_dir = f"{path}/Images"
     labels_dir = f"{path}/Labels"

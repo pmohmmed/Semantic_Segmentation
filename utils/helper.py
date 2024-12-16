@@ -5,7 +5,7 @@ def stg_msg(msg='', c=' ', l=50):
     if len(msg) % 2:
         aft += c
 
-    print('\n-- ' + bef + msg + aft + ' --')
+    print('\n\n-- ' + bef + msg + aft + ' --\n')
 
 
 def save_msg(msg, c='|', l=2):
