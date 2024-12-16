@@ -1,3 +1,4 @@
+from utils.helper import message
 from utils.options import test_opt
 from utils.io import load, save
 
@@ -11,7 +12,7 @@ opt = test_opt()
 
 ## load data
 test_dir = f'{opt.data_path}/test_data'
-images, _ = load(test_dir, pre=False)
+images, _ = load(test_dir, pre=False, name='Test data')
 print(f'samples: {len(images)}')
 
 ## preprocess
@@ -19,11 +20,11 @@ pre = joblib.load(opt.pre_path)
 pre_images = pre.images_pre(images)
 
 ## load model
-print('\n--       Loading Model      --\n')
+message('Loading Model')
 model = load_model(opt.model_path)
 
 ## inference
-print('\n--      Inference      --\n')
+message('Inferencing...')
 # predict
 predicted_labels = model.predict(pre_images)
 

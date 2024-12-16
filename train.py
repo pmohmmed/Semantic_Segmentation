@@ -1,3 +1,4 @@
+from utils.helper import message
 from models.unet import build_unet
 from utils.options import train_opt
 from utils.io import load
@@ -15,8 +16,8 @@ a_pre = not(opt.enc) # already preprocssed
 train_dir = f'{opt.data_path}/train_data'
 val_dir = f'{opt.data_path}/val_data'
 
-images, labels = load(train_dir, pre=a_pre, shuffle=True, name='Train Data')
-images_val, labels_val = load(val_dir, pre=a_pre, name='Val Data')
+images, labels = load(train_dir, pre=a_pre, shuffle=True, name='Train data')
+images_val, labels_val = load(val_dir, pre=a_pre, name='Val data')
 print(f'train: {len(images)}')
 print(f'val: {len(images_val)}')
 
@@ -49,7 +50,9 @@ model.compile(
 if opt.mods:
     model.summary()
 
+
 ## train
+message('Training...')
 u_history = model.fit(
         pre_images[:10], pre_labels[:10],
         validation_data=(pre_images_val[:10], pre_labels_val[:10]),

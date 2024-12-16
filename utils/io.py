@@ -1,3 +1,5 @@
+from utils.helper import message
+
 import numpy as np
 from glob import glob
 import cv2
@@ -24,7 +26,8 @@ def load_img(path):
 
 
 def load(folder_path=None, shuffle=False, pre=False, name='Data'):
-    print(f'\n--       Loading {name}        --\n')
+    message(f'Loading {name}')
+
     image_paths, label_paths = prepare_paths(folder_path, pre)
 
     images = [load_img(img_path) for img_path in image_paths]
@@ -33,9 +36,7 @@ def load(folder_path=None, shuffle=False, pre=False, name='Data'):
     if shuffle:
         images, labels = shuffle_data(images, labels)
 
-
     #print('--> Compeleted')
-
     if pre:
         return np.array(images), np.array(labels)
     return images, labels
@@ -54,7 +55,7 @@ def shuffle_data(images, labels):
 def save(path, images, labels, prefix_name='__'):
     """Prefix_name should be "pre_" if you're saving preprocessed data"""
     
-    print('\n--       Saving      --\n')
+    message('Saving')
 
     images_dir = f"{path}/Images"
     labels_dir = f"{path}/Labels"

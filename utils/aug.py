@@ -1,4 +1,7 @@
+from utils.helper import message
+
 import numpy as np
+
 
 def select(images, labels, labels_to_check, classes_dic):
     """ Select the images & labels that meet the ratios on 'Classes_dic'"""
@@ -21,7 +24,7 @@ def select(images, labels, labels_to_check, classes_dic):
             selected_imgs.append(images[i])
             selected_lbls.append(labels[i])
 
-    print(f"{len(selected_imgs)} samples selected")
+    message(f"{len(selected_imgs)} samples selected", c='.')
 
     return selected_imgs, selected_lbls
 

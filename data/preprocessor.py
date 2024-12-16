@@ -1,3 +1,5 @@
+from utils.helper import message
+
 import numpy as np
 import cv2
 
@@ -110,7 +112,7 @@ class Preprocessor:
 
 
     def images_pre(self, images):
-        print('\n--       Images Preprocessing       --\n')
+        message('Images Preprocessing')
         
         ## resize & normalize
         images = self.resize(images) / 255.0 
@@ -119,7 +121,7 @@ class Preprocessor:
 
 
     def labels_pre(self, labels, encode=True, fix=True):
-        print('\n--       Labels Preprocessing      --\n')
+        message('Labels Preprocessing')
 
         ## resize
         pre_labels = self.resize(labels)
