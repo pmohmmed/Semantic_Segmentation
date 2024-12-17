@@ -6,6 +6,5 @@ demo_env/
 pre_trained/
 __pycache__
 *.pkl
-*incept.py
 *.keras
 *.h5
