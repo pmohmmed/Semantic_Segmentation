@@ -3,7 +3,6 @@ data_aug/
 data_pre/
 results/
 demo_env/
-pre_trained/
 __pycache__
 *.pkl
 *.keras
