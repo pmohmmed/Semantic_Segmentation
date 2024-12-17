@@ -6,5 +6,5 @@ python3 -m train \
         --enc False \
         --res 256 \
         --data_path ../aug_pre \
-        --model_path ./unet.keras \
+        --model_path pre_trained/unet.keras \
         --pre_obj_path ./data/pre.pkl
