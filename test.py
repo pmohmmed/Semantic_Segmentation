@@ -11,7 +11,7 @@ from tensorflow.keras.models import load_model
 ## vars
 opt = test_opt()
 
-test_dir = f'{opt.data_path}/test_data'
+test_dir = opt.data_path
 
 
 ## load
@@ -38,20 +38,24 @@ print(f'# imgs: {pre_images.shape}')
 
 
 ## inference
-stg_msg('Inferencing', c='.')
-predicted_labels = model.predict(pre_images)
+if pre_images.shape[1:] !=  model.input_shape[1:]:
+    print(f'|!| Expected input shape: {model.input_shape[1:]}')
 
-# select highist class for each pixel
-encoded_labels = np.array([np.argmax(label, axis=-1)
-                             for label in predicted_labels])
+else:
+    stg_msg('Inferencing', c='.')
+    predicted_labels = model.predict(pre_images)
 
-# decode back to rgb
-labels = np.array([pre.decode_label(label) 
-                     for label in encoded_labels], dtype='uint8')
+    # select highist class for each pixel
+    encoded_labels = np.array([np.argmax(label, axis=-1)
+                                 for label in predicted_labels])
+
+    # decode back to rgb
+    labels = np.array([pre.decode_label(label) 
+                         for label in encoded_labels], dtype='uint8')
 
 
-## save results
-stg_msg('Saving')
-save(opt.results_path, images, labels, prefix_name='inf_')
-save_msg(f'inference results saved to: {opt.results_path}')
+    ## save results
+    stg_msg('Saving')
+    save(opt.results_path, images, labels, prefix_name='inf_')
+    save_msg(f'inference results saved to: {opt.results_path}')
 
