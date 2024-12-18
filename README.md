@@ -134,26 +134,20 @@ bash scripts/train.sh
 
 Command:
 ```bash
+## set --enc True if the data labels are RGB
 python3 -m train \
-        --lr 0.0005 \
-        --epochs 1 \
+        --lr 0.001 \
+        --epochs 10 \
+        --batch_size 16 \
         --enc False \
         --res 256 \
         --data_path path/to/dataset/ \
         --model_path path/to/save/model/unet.keras \
-        --pre_obj_path path/to/save/preprocessor/obj/pre.pkl
 ```
 
 <br>
 
 ## Inference
-
-To run inference, you will need the following:
-
-- A **pre-trained model** (e.g., `unet.keras`, `inception.h5`)
-- A **preprocessed object** (e.g., `pre_obj.pkl`)
-
-If you trained the model, both of these files would have been created automatically. Make sure they exist before running inference.
 
 Run **test.sh** script:
 ```bash
@@ -168,8 +162,12 @@ python3 -m test \
         --data_path path/to/test_data \
         --results_path path/to/save/results/\
         --model_path path/to/model/unet.keras \
-        --pre_obj_path path/to/preprocessor/pre.pkl \
         --show_results False
 ``` 
+<br>
 
-
+## Upcoming Work
+- Evaluate model performance using metrics such as IoU, SSIM, mIoU, F1-Score, etc.
+- Experiment with different architectures to improve accuracy and efficiency.
+- Expand and refine the dataset for better generalization.
+- Implement and optimize real-time inference capabilities.
