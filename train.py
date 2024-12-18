@@ -72,8 +72,8 @@ if opt.mods:
 stg_msg('Training', c='.')
 
 u_history = model.fit(
-        pre_images[:10], pre_labels[:10],
-        validation_data=(pre_images_val[:10], pre_labels_val[:10]),
+        pre_images, pre_labels,
+        validation_data=(pre_images_val, pre_labels_val),
         batch_size=opt.batch_size,
         epochs=opt.epochs,
         )
