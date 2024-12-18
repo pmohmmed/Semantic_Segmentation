@@ -7,3 +7,6 @@ __pycache__
 *.pkl
 *.keras
 *.h5
+*.png
+*.jpg
+*.fake
