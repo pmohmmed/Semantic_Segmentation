@@ -9,10 +9,11 @@
 
 ## Dataset
 
-The dataset contains 270 paired samples, split into:
+The dataset consists of 270 paired samples with a resolution of 540 × 960, divided as follows:
 
 - **Training**: 200 samples
 - **Validation**: 70 samples
+
 
 Each paired sample consists of an image and its corresponding label or mask. Additionally, there are 150 single images provided for testing purposes.
 
@@ -35,8 +36,7 @@ The labels are later encoded as numbers ranging from 0 to 7.
 
 Data augmentation and preprocessing techniques were applied to generate additional data, making it ready for direct use in training.
 
-- **Original resolution**: 540x960  
-- **New resolution**: 256x512 
+- **Resolution**: 256x512 
 - **Total size**: 810 samples
 
 This dataset requires minimal preprocessing before training.
