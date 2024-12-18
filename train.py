@@ -74,6 +74,7 @@ stg_msg('Training', c='.')
 u_history = model.fit(
         pre_images[:10], pre_labels[:10],
         validation_data=(pre_images_val[:10], pre_labels_val[:10]),
+        batch_size=opt.batch_size,
         epochs=opt.epochs,
         )
 
