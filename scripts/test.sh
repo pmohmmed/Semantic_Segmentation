@@ -1,10 +1,8 @@
 #!/bin/sh
 
 python3 -m test \
-        --data_path ../aug_pre/test_data \
+        --data_path ../inf_data \
         --results_path ../results\
-        --model_path incep_t5.keras \
+        --model_path pre_trained/incep_mod.keras \
         --show_results False
-
-
 

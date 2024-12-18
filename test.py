@@ -52,6 +52,6 @@ if len(encoded_labels):
 
     # save rgb labels
     stg_msg('Saving')
-    save(opt.results_path, images, labels, prefix_name='inf_')
+    save(opt.results_path, pre_images*255, labels, prefix_name='inf_')
     save_msg(f'inference results saved to: {opt.results_path}')
 
