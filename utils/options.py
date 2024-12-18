@@ -34,8 +34,9 @@ def test_opt():
     parser.add_argument('--model_path', type=str, required=True, help="Model weights path.")
     parser.add_argument('--data_path', type=str, required=True, help="Dataset path.")
     parser.add_argument('--results_path', type=str, required=True, help="Path to save the results.")
-    parser.add_argument('--pre_obj_path', type=str, required=True, help="Preprocessor path.")
     parser.add_argument('--show_results', type=str_to_bool, required=True, help="Show input imgs with it's predicted masks.")
+    ## not required
+    parser.add_argument('--pre_obj_path', type=str, default='data/pre.pkl', help="Preprocessor path.")
 
     return parser.parse_args()
 

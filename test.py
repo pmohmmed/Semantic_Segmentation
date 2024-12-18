@@ -1,9 +1,11 @@
 from utils.helper import stg_msg, save_msg
 from utils.options import test_opt
 from utils.io import load, save
+from utils.inference import infer
+from data.preprocessor import Preprocessor
 
 import numpy as np
-import joblib
+#import joblib
 from tensorflow.keras.models import load_model
 
 
@@ -12,7 +14,6 @@ from tensorflow.keras.models import load_model
 opt = test_opt()
 
 test_dir = opt.data_path
-
 
 ## load
 stg_msg('Loading')
@@ -26,7 +27,8 @@ model = load_model(opt.model_path)
 print(f'# model: {model.name}')
 
 # preprocessor object
-pre = joblib.load(opt.pre_obj_path)
+#pre = joblib.load(opt.pre_obj_path)
+pre = Preprocessor(resize_to=model.input_shape[1:-1], one_h=False)
 
 
 ## preprocess
@@ -38,23 +40,17 @@ print(f'# imgs: {pre_images.shape}')
 
 
 ## inference
-if pre_images.shape[1:] !=  model.input_shape[1:]:
-    print(f'|!| Expected input shape: {model.input_shape[1:]}')
+stg_msg('Inferencing', c='.')
+encoded_labels = infer(pre_images, model)
 
-else:
-    stg_msg('Inferencing', c='.')
-    predicted_labels = model.predict(pre_images)
 
-    # select highist class for each pixel
-    encoded_labels = np.array([np.argmax(label, axis=-1)
-                                 for label in predicted_labels])
-
+## save results
+if len(encoded_labels):
     # decode back to rgb
     labels = np.array([pre.decode_label(label) 
-                         for label in encoded_labels], dtype='uint8')
+                       for label in encoded_labels], dtype='uint8')
 
-
-    ## save results
+    # save rgb labels
     stg_msg('Saving')
     save(opt.results_path, images, labels, prefix_name='inf_')
     save_msg(f'inference results saved to: {opt.results_path}')
