@@ -42,6 +42,18 @@ def load(folder_path=None, shuffle=False, pre=False, name='Data'):
     return images, labels
 
 
+def load_seq(path):
+    sequences = glob(os.path.join(path, 'seq*'))
+    images, labels = [], []
+    for seq in sequences:
+        imgs, lbls = load(seq, pre=False)
+        
+        images += imgs
+        labels += lbls
+
+    return images, labels
+
+
 def shuffle_data(images, labels):
     indices = np.arange(len(images))
     np.random.shuffle(indices)
@@ -61,21 +73,28 @@ def save(path, images, labels, prefix_name='__'):
     labels_dir = f"{path}/Labels"
 
     os.makedirs(images_dir, exist_ok=True)
-    os.makedirs(labels_dir, exist_ok=True)
 
-    for idx, (image, label) in enumerate(zip(images, labels)):
+    if labels is not None:
+        os.makedirs(labels_dir, exist_ok=True)
+
+    for idx, image in enumerate(images):
+        ## image
         image = image.astype('uint8')
-        label = label.astype('uint8')
-
         image_path = os.path.join(images_dir, f"{prefix_name}{idx}.png")
-        label_path = os.path.join(labels_dir, f"{prefix_name}{idx}.png")
 
         if image.ndim == 3 and image.shape[-1] == 3:
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-            
-        if label.ndim == 3 and label.shape[-1] == 3:
-            label = cv2.cvtColor(label, cv2.COLOR_RGB2BGR)
 
         cv2.imwrite(image_path, image)
-        cv2.imwrite(label_path, label)
+            
+
+        ## label
+        if labels is not None:
+            label = labels[idx].astype('uint8')
+            label_path = os.path.join(labels_dir, f"{prefix_name}{idx}.png")
+
+            if label.ndim == 3 and label.shape[-1] == 3:
+                label = cv2.cvtColor(label, cv2.COLOR_RGB2BGR)
+
+            cv2.imwrite(label_path, label)
 
