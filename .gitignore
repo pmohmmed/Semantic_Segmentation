@@ -1,8 +1,5 @@
 .DS_Store
-data_aug/
-data_pre/
-results/
-demo_env/
+*env*/
 __pycache__
 *.pkl
 *.keras
@@ -10,3 +7,4 @@ __pycache__
 *.png
 *.jpg
 *.fake
+.*
