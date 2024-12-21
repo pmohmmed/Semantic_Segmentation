@@ -8,17 +8,26 @@
 
 
 ## Dataset
+### UAVid Dataset
+The UAVid dataset is a high-resolution semantic segmentation dataset specifically designed for UAV-captured street scenes.
 
-The dataset consists of 270 paired samples with a resolution of 540 × 960, divided as follows:
+It consists of 42 sequences (seq1 to seq42) captured in 4K resolution with oblique views. Each sequence includes two folders: `Images` (input data) and `Labels` (ground truth).
 
-- **Training**: 200 samples
+
+<br>
+
+### Dataset Distribution
+The dataset is split into three subsets:
+
+- **Train**: 200 samples
 - **Validation**: 70 samples
+- **Test**: 150 samples
 
 
-Each paired sample consists of an image and its corresponding label or mask. Additionally, there are 150 single images provided for testing purposes.
+<br>
 
-The label images include annotations for 8 RGB classes, which are used for semantic segmentation. Each class is associated with a unique RGB value. 
-The labels are later encoded as numbers ranging from 0 to 7.
+### Label Information
+The label images contain annotations for 8 semantic classes, each represented by a unique RGB value. For processing, these labels are encoded into numerical values ranging from 0 to 7.
 |Class|R, G, B|Encode|
 |-----|-------|:----:|
 |Background clutter |![#000000](https://placehold.co/15x15/000000/000000.png) `(0, 0, 0)`     |`0`|   
@@ -30,29 +39,37 @@ The labels are later encoded as numbers ranging from 0 to 7.
 |Static car         |![#C000C0](https://placehold.co/15x15/C000C0/C000C0.png) `(192, 0, 192)` |`6`|
 |human              |![#404000](https://placehold.co/15x15/404000/404000.png) `(64, 64, 0)`   |`7`|
 
+
 <br>
 
-### Aug_pre dataset
+### Variations
+Two datasets were derived from the original UAVid dataset.
 
-Data augmentation and preprocessing techniques were applied to generate additional data, making it ready for direct use in training.
+1. **uavid_512**:
+    - Resolution: 512×1024.
 
-- **Resolution**: 256x512 
-- **Total size**: 810 samples
+2. **aug_enc_256**: 
+    - Minimal preprocessing required.
+    - Preprocessing steps:
+        - **Augmentation**: Applied to the `train_data`.
+        - **Label Encoding**: Applied to (train, val, and test) data.
+    - New `train_data` size: 810 samples.
+    - Resolution: 256×512.
 
-This dataset requires minimal preprocessing before training.
 
 <br>
 
 ### Download
 
-|Resolution|Google Drive|Github|
-|:---------|:----------:|:----:|
-|Aug_pre (256 x 512)|None|[Download](https://github.com/pmohmmed/aug_pre/archive/refs/heads/main.zip)|
-|Orig (540 x 960)|[Download](https://drive.google.com/drive/folders/1qJzEsf-S0Kg2SSYELEBl4D9lo9ytIpax)|None
+|Dataset|Source|
+|:---------|:----:|
+|uavid (2160x3840)|[official](https://uavid.nl/)|
+|aug_enc_256 (256x512)|[github](https://github.com/pmohmmed/aug_enc_256/archive/refs/heads/main.zip)|
+|uavid_512 (512x1024)|[drive](https://drive.google.com/drive/folders/1NtKH4eGmYFExvNokf0Gs5FTt589VjEeY)|
 
 <br>
 
-The Structure of dataset directory:
+The dataset is re-organized as follows:
 ```
 dataset/
   ├── train_data/
@@ -66,15 +83,16 @@ dataset/
   └── test_data/
       └── Images/
 ```
+**Note**: If you are working with the official UAVid dataset, use [this](https://github.com/pmohmmed/semantic-segmentation-uav/blob/main/notebooks/prepare_official_data.ipynb) notebook to re-organize it.
 
 <br>
 
 ## Environment setup
 - Clone this repo:
   ```bash
-  git clone https://github.com/pmohmmed/semantic-segmentation-uav.git;
+  git clone https://github.com/pmohmmed/semantic-segmentation-uavid.git;
   
-  cd semantic-segmentation-uav
+  cd semantic-segmentation-uavid
   ```
 
 
@@ -100,9 +118,8 @@ dataset/
 
 <br>
 
-
 ## Augmentation
-Skip this stage if you are using the [aug_pre](#aug_pre-dataset) dataset.
+Skip this stage if you are using the [aug_enc_256](#variations) dataset.
 
 To proceed, run **augment.sh** script:
 ```bash 
@@ -114,9 +131,8 @@ bash scripts/augment.sh
 Command:
 ```bash
 python3 -m augment \
-        --data_path path/to/dataset \
+        --data_path path/to/dataset/train_data \
         --aug_data_path path/to/save/aug_data \
-        --pre_obj_path path/to/preprocessor/pre.pkl \
         --pre True \
         --res 256 \
 ```
@@ -171,3 +187,12 @@ python3 -m test \
 - Experiment with different architectures to improve accuracy and efficiency.
 - Expand and refine the dataset for better generalization.
 - Implement and optimize real-time inference capabilities.
+
+<br>
+
+## Licence
+The dataset and all variations are licensed under the [UAVid](https://uavid.nl/) dataset license:
+
+`Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License`
+
+[You may not use this work for commercial purposes]
