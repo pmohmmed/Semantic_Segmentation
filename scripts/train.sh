@@ -7,5 +7,5 @@ python3 -m train \
         --batch_size 16 \
         --enc False \
         --res 256 \
-        --data_path ../aug_pre \
+        --data_path ../aug_enc_256 \
         --model_path pre_trained/unet.keras \

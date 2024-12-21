@@ -20,7 +20,7 @@ pre_aug = Preprocessor(resize_to=(opt.res, opt.res*2), one_h=False)
 ## load
 stg_msg('Loading')
 
-images, labels = load(f'{opt.data_path}/train_data', pre=False)
+images, labels = load(f'{opt.data_path}', pre=False)
 print(f'# train data: {len(images)}')
 
 
@@ -111,6 +111,6 @@ save(opt.aug_data_path, images_aug, labels_aug, prefix_name=prefix)
 save_msg(f'augmented data saved to: {opt.aug_data_path}')
 
 # preprocessor object
-joblib.dump(pre_aug, opt.pre_obj_path)
-save_msg(f'preprocessor object saved to: {opt.pre_obj_path}')
+#joblib.dump(pre_aug, opt.pre_obj_path)
+#save_msg(f'preprocessor object saved to: {opt.pre_obj_path}')
 

@@ -1,9 +1,8 @@
 #!/bin/sh
 
 python3 -m augment \
-        --data_path ../aug_pre/ \
-        --aug_data_path ./data_aug/ \
-        --pre_obj_path ./data/pre.pkl \
+        --data_path ../uavid_512/train_data \
+        --aug_data_path ./aug_enc_256/ \
         --pre True \
         --res 256 \
 
