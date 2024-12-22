@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "You can cite this work as follows:"
+authors:
+- family-names: "Mustafa"
+  given-names: "Mohamed"
+  orcid: "https://orcid.org/0009-0006-3671-1172"
+title: "semantic-segmentation-uavid"
+version: 1.0.0
+doi: 10.5281/zenodo.14542310
+date-released: 2024-12-21
+url: "https://github.com/pmohmmed/semantic-segmentation-uavid"
