@@ -6,14 +6,15 @@ from data.preprocessor import Preprocessor
 
 import joblib
 from keras.optimizers import Adam
+from os.path import join
 
 
 
 ## vars
 opt = train_opt() # command arguments
 
-train_dir = f'{opt.data_path}/train_data'
-val_dir = f'{opt.data_path}/val_data'
+train_dir = join(opt.data_path, 'train_data')
+val_dir = join(opt.data_path, 'val_data')
 
 pre = Preprocessor(resize_to=(opt.res, 2*opt.res), one_h=False)
 a_pre = not(opt.enc) # already preprocssed
